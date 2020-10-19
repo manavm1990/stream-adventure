@@ -36,6 +36,7 @@
   "dependencies": {
     "concat-stream": "^2.0.0",
     "readable-stream": "^3.6.0",
-    "split2": "^3.2.2"
+    "split2": "^3.2.2",
+    "ws": "^7.3.1"
   }
 }
