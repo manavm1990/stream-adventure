@@ -1,4 +1,3 @@
-const { count } = require("console");
 const duplexer = require("duplexer3");
 const { finished, Transform } = require("stream");
 
