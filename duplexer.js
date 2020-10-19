@@ -9,8 +9,8 @@ module.exports =
    */
   (cmd, args) => {
     // spawn process and return a single stream
-    const processStream = spawn(cmd, args);
+    const { stdin, stdout } = spawn(cmd, args);
 
     // @returns a single duplex stream joining together the stdin and stdout
-    return duplexer(processStream.stdin, processStream.stdout);
+    return duplexer(stdin, stdout);
   };
