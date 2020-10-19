@@ -1,5 +1,5 @@
 const { spawn } = require("child_process");
-const duplexer3 = require("duplexer3");
+const duplexer = require("duplexer3");
 
 module.exports =
   /**
@@ -12,5 +12,5 @@ module.exports =
     const processStream = spawn(cmd, args);
 
     // @returns a single duplex stream joining together the stdin and stdout
-    return duplexer3(processStream.stdin, processStream.stdout);
+    return duplexer(processStream.stdin, processStream.stdout);
   };
