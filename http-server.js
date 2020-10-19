@@ -5,7 +5,7 @@ const { Transform } = require("readable-stream");
 const [_, __, port] = process.argv;
 
 const transformer = new Transform({
-  transform(buf, _, next) {
+  transform(buf, ___, next) {
     this.push(buf.toString().toUpperCase());
     next();
   },
