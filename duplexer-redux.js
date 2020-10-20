@@ -13,13 +13,20 @@ const transform = new Transform({
 });
 
 module.exports = (counter) => {
-  const duplex = duplexer({ objectMode: true }, transform, counter);
+  const duplex = duplexer(
+    { objectMode: true },
+
+    // 'Merge' 'writer' and 'reader' into...duplexer 🦄.
+    transform,
+    counter
+  );
+
+  // Keep on...'transforming!' 🚚
+  transform.resume();
 
   finished(transform, () => {
     counter.setCounts(countryCount);
   });
-
-  transform.resume();
 
   return duplex;
 };

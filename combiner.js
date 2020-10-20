@@ -23,6 +23,16 @@ const transform = new Transform({
 });
 
 module.exports = () =>
+  /**
+   * Break up a stream and reassemble it so that each line is a chunk.
+   * https://www.npmjs.com/package/split2
+   * ⬇️
+   * transform - 'categorize books by genre' 👆🏽
+   * ⬇️
+   * zip 🤐
+   *
+   * 'cb' when 'pipeline' is dun
+   */
   pipeline(split2(), transform, gzip, (err) => {
     if (err) {
       console.error("Pipeline failed.", err);
