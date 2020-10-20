@@ -27,6 +27,6 @@ module.exports = () =>
     if (err) {
       console.error("Pipeline failed.", err);
     } else {
-      console.log("Pipeline succeeded.");
+      console.info("Pipeline succeeded.");
     }
   });

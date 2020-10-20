@@ -21,7 +21,7 @@ tarParser.on(
 
     entryStream.pipe(hashStream).pipe(
       concat((buffer) => {
-        console.log(buffer.toString());
+        console.info(`${fileContents} ${entryStream.path}`);
       })
     );
 
