@@ -8,5 +8,5 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: "module",
   },
-  rules: { "no-unused-vars": ["error", { varsIgnorePattern: "^_" }] },
+  rules: { "no-unused-vars": ["warn", { varsIgnorePattern: "^_" }] },
 };
