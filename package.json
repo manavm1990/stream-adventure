@@ -39,6 +39,7 @@
     "readable-stream": "^3.6.0",
     "split2": "^3.2.2",
     "stream-combiner2": "^1.1.1",
+    "tar": "^6.0.5",
     "trumpet": "^1.7.2",
     "ws": "^7.3.1"
   }
