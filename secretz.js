@@ -10,17 +10,22 @@ const tarParser = new tar.Parse();
 tarParser.on(
   "entry",
   // Event wistener receives a readable stream of file contents
-  (ev) => {
+  (entryStream) => {
     // If this is not a file, nothing to see here, move along!
-    if (ev.type !== "File") {
-      ev.resume();
+    if (entryStream.type !== "File") {
+      entryStream.resume();
     }
 
     // for each file, create an encoded hash
     const hashStream = crypto.createHash("md5", { encoding: "hex" });
-    console.log(ev.path);
 
-    ev.resume();
+    entryStream.pipe(hashStream).pipe(
+      concat((buffer) => {
+        console.log(buffer.toString());
+      })
+    );
+
+    entryStream.resume();
   }
 );
 
