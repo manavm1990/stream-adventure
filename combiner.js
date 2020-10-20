@@ -1,6 +1,9 @@
-const combine = require("stream-combiner2");
 const split2 = require("split2");
+const { pipeline } = require("stream");
 const { Transform } = require("stream");
+const { createGzip } = require("zlib");
+
+const gzip = createGzip();
 
 const categorizedBooks = {};
 
@@ -15,9 +18,15 @@ const transform = new Transform({
     } else {
       categorizedBooks.books = [];
     }
-    console.log(JSON.stringify(categorizedBooks));
     next();
   },
 });
 
-module.exports = () => combine(split2(), transform);
+module.exports = () =>
+  pipeline(split2(), transform, gzip, (err) => {
+    if (err) {
+      console.error("Pipeline failed.", err);
+    } else {
+      console.log("Pipeline succeeded.");
+    }
+  });
